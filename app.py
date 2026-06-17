@@ -3,10 +3,7 @@ import pandas as pd
 import numpy as np
 import pickle
 from datetime import datetime
-import os
-from dotenv import load_dotenv
 
-load_dotenv()
 
 
 st.set_page_config(page_title="Content Monetization Modeler", page_icon="📈", layout="wide" )
