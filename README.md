@@ -1,8 +1,8 @@
-# 📈 Content Monetization Modeler
+# Content Monetization Modeler
 
 A Machine Learning application that predicts YouTube ad revenue using video performance metrics, audience engagement, content category, device type, and viewer location.
 
-🔗 **Live Demo:** YOUR_RENDER_LINK_HERE
+🔗 **Live Demo:** (https://content-monetization-modeler.onrender.com/)
 
 ---
 
@@ -107,7 +107,7 @@ The application allows users to:
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - Python
 - Pandas
