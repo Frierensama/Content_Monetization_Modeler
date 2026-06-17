@@ -19,7 +19,7 @@ with open(os.getenv('features_path'), 'rb') as file:
     features = pickle.load(file) 
 
 try:
-    results = pd.read_csv("Content_Monetization_Modeler/Model_pickles/model_comparison.csv")
+    results = pd.read_csv(os.getenv('model_comparision_path'))
 except:
     results = None
 
@@ -42,38 +42,10 @@ watch_time = st.sidebar.number_input("Watch Time (Minutes)", min_value=0.0, valu
 video_length = st.sidebar.number_input("Video Length (Minutes)", min_value=0.1, value=10.0)
 subscribers = st.sidebar.number_input("Subscribers", min_value=0, value=100000)
 
-category = st.sidebar.selectbox(
-    "Category",
-    [
-        "Education",
-        "Entertainment",
-        "Gaming",
-        "Lifestyle",
-        "Music",
-        "Tech"
-    ]
-)
+category = st.sidebar.selectbox( "Category", ["Education", "Entertainment", "Gaming", "Lifestyle", "Music", "Tech"])
+device = st.sidebar.selectbox( "Device", [ "Desktop", "Mobile", "TV", "Tablet"])
 
-device = st.sidebar.selectbox(
-    "Device",
-    [
-        "Desktop",
-        "Mobile",
-        "TV",
-        "Tablet"
-    ]
-)
-
-country = st.sidebar.selectbox(
-    "Country",
-    [
-        "CA",
-        "DE",
-        "IN",
-        "UK",
-        "US"
-    ]
-)
+country = st.sidebar.selectbox( "Country",[ "CA", "DE", "IN", "UK", "US"])
 
 if st.sidebar.button("Predict Revenue"):
 
@@ -94,11 +66,8 @@ if st.sidebar.button("Predict Revenue"):
     input_df["weekday"] = today.weekday()
 
     engagement_rate = (likes + comments) / max(views, 1)
-
     likes_per_view = (likes) / max(views, 1)
-
     comments_per_view = (comments) / max(views, 1)
-
     watch_time_per_view = (watch_time) / max(views, 1)
 
     input_df["engagement_rate"] = engagement_rate
@@ -141,16 +110,12 @@ with col2:
 with col3:
     st.metric("RMSE","13.78")
 
-# =====================================================
 # MODEL COMPARISON
-# =====================================================
 
 if results is not None:
 
     st.markdown("---")
-
     st.header("Model Comparison")
-
     st.dataframe(results, use_container_width=True)
 
 st.markdown("---")
@@ -160,9 +125,9 @@ st.header("🔍 Key Insights")
 st.markdown("""
 ### Findings
 
-- Watch Time was the strongest predictor of YouTube ad revenue.
+- Videos with higher total watch time generate significantly more advertising revenue.
+- Higher audience engagement tends to accompany higher revenue.
 - Linear Regression achieved the highest predictive performance among all tested models.
-- The model explains approximately **95% of the variation** in ad revenue.
 - Audience engagement positively impacts monetization performance.
 - Complex ensemble models such as Random Forest, Gradient Boosting, and XGBoost did not outperform Linear Regression due to the highly linear relationship present in the dataset.
 """)
