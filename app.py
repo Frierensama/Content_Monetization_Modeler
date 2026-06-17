@@ -11,15 +11,15 @@ load_dotenv()
 
 st.set_page_config(page_title="Content Monetization Modeler", page_icon="📈", layout="wide" )
 
-with open(os.getenv('model_path'), 'rb') as file:
+with open('best_lr.pkl', 'rb') as file:
     model = pickle.load(file) 
-with open(os.getenv('scaler_path'), 'rb') as file:
+with open('scaler.pkl', 'rb') as file:
     scaler = pickle.load(file) 
-with open(os.getenv('features_path'), 'rb') as file:
+with open('features.pkl', 'rb') as file:
     features = pickle.load(file) 
 
 try:
-    results = pd.read_csv(os.getenv('model_comparision_path'))
+    results = pd.read_csv("model_comparision.csv")
 except:
     results = None
 
