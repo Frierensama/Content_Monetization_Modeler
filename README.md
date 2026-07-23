@@ -2,7 +2,10 @@
 
 A Machine Learning application that predicts YouTube ad revenue using video performance metrics, audience engagement, content category, device type, and viewer location.
 
-🔗 **Live Demo:** (https://content-monetization-modeler.onrender.com/)
+🔗 **Live Demo:** 
+```bash
+https://content-monetization-modeler-bleh.streamlit.app/
+```
 
 ---
 
